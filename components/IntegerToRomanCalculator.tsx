@@ -1,10 +1,12 @@
 import { FC, useState } from "react";
 
-type DecimalPlaces = "units" | "tens";
+type DecimalPlaces = "units" | "tens" | "hundreds" | "thousands";
 
 const lookup: Record<DecimalPlaces, string[]> = {
-  units: ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"],
-  tens: ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"],
+  units: ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"],
+  tens: ["X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"],
+  hundreds: ["C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"],
+  thousands: ["M", "MM", "MMM"],
 };
 
 /**
@@ -16,12 +18,14 @@ const romanize = (integer: number) => {
   const indexToDecimalPlacesLookup: Record<number, DecimalPlaces> = {
     0: "units",
     1: "tens",
+    2: "hundreds",
+    3: "thousands",
   };
   const roman = Array.from(String(integer))
     .reverse()
     .reduce((romanized, digit, i) => {
       return `${
-        lookup[indexToDecimalPlacesLookup[i]][Number(digit)] ?? ""
+        lookup[indexToDecimalPlacesLookup[i]][Number(digit) - 1] ?? ""
       }${romanized}`;
     }, "");
   return roman;
