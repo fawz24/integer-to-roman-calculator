@@ -1,8 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import {
-  IntegerToRomanCalculator,
-  MAX_SUPPORTED_ROMAN,
-} from "@/components/IntegerToRomanCalculator";
+import { IntegerToRomanCalculator } from "@/components/IntegerToRomanCalculator";
+import { MAX_SUPPORTED_ROMAN } from "@/components/IntegerToRomanCalculator/utils";
 
 describe("IntegerToRomanCalculator", () => {
   it.each([
