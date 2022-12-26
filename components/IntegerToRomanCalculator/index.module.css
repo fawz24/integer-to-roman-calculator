@@ -1,0 +1,49 @@
+.container {
+    --font-size: 1.5rem;
+    --gap: 24px;
+
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    gap: calc(var(--gap) / 2);
+}
+
+.divider {
+    width: 1px;
+    border-left: 1px solid rgb(212, 212, 212);
+}
+
+.heading {
+    margin: 0;
+}
+
+.inputContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap);
+}
+
+.input {
+    position: relative;
+    font-size: var(--font-size);
+    width: calc(var(--font-size) * 5);
+    padding: 8px 12px;
+}
+
+.outputContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap);
+}
+
+.roman {
+    margin-block: 0;
+    font-size: calc(var(--font-size) + 0.5rem);
+    flex: 1;
+    display: flex;
+    align-items: center;
+}

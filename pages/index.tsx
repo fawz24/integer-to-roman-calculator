@@ -16,7 +16,9 @@ export default function Home() {
 
       <main>
         <h1 className={styles.title}>{title}</h1>
-        <IntegerToRomanCalculator min={1} max={1000}></IntegerToRomanCalculator>
+        <section className={styles.content}>
+          <IntegerToRomanCalculator min={1} max={1000} />
+        </section>
       </main>
 
       <footer className={styles.footer}>

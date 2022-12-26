@@ -20,6 +20,7 @@
 
 .title {
   margin: 0;
+  margin-block-start: 24px;
   line-height: 1.15;
   font-size: 4rem;
 }
@@ -32,6 +33,12 @@
 .description {
   line-height: 1.5;
   font-size: 1.5rem;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  margin-block-start: 24px;
 }
 
 .grid {

@@ -1,5 +1,6 @@
 import { ChangeEventHandler, FC, useState } from "react";
 import { MAX_SUPPORTED_ROMAN, romanize } from "./utils";
+import styles from "./index.module.css";
 
 interface IntegerToRomanCalculatorProps {
   /** the mininum accepted integer */
@@ -28,10 +29,11 @@ export const IntegerToRomanCalculator: FC<IntegerToRomanCalculatorProps> = ({
   };
 
   return (
-    <div>
-      <label>
-        <h3>Integer</h3>
+    <div className={styles.container}>
+      <label className={styles.inputContainer}>
+        <h3 className={styles.heading}>Integer</h3>
         <input
+          className={styles.input}
           type="number"
           min={min}
           max={max}
@@ -40,8 +42,13 @@ export const IntegerToRomanCalculator: FC<IntegerToRomanCalculatorProps> = ({
           name="integer"
         />
       </label>
-      <h3>Roman</h3>
-      <p data-testid="roman-output">{roman}</p>
+      <div className={styles.divider}></div>
+      <div className={styles.outputContainer}>
+        <h3 className={styles.heading}>Roman</h3>
+        <p className={styles.roman} data-testid="roman-output">
+          {roman}
+        </p>
+      </div>
     </div>
   );
 };
