@@ -1,5 +1,7 @@
 import { FC, useState } from "react";
 
+export const MAX_SUPPORTED_ROMAN = 3999;
+
 type DecimalPlaces = "units" | "tens" | "hundreds" | "thousands";
 
 const lookup: Record<DecimalPlaces, string[]> = {
@@ -40,7 +42,7 @@ interface IntegerToRomanCalculatorProps {
 
 export const IntegerToRomanCalculator: FC<IntegerToRomanCalculatorProps> = ({
   min = 1,
-  max = 3000,
+  max = MAX_SUPPORTED_ROMAN,
 }) => {
   const [integer, setInteger] = useState<number | undefined>();
   const roman = integer ? romanize(integer) : "";
