@@ -1,6 +1,11 @@
 import { FC, useState } from "react";
 
-const lookup = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+type DecimalPlaces = "units" | "tens";
+
+const lookup: Record<DecimalPlaces, string[]> = {
+  units: ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"],
+  tens: ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"],
+};
 
 /**
  * Converts a given integer value to roman notation
@@ -8,7 +13,18 @@ const lookup = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
  * @returns the integer value in roman numerals form
  */
 const romanize = (integer: number) => {
-  return lookup[integer - 1];
+  const indexToDecimalPlacesLookup: Record<number, DecimalPlaces> = {
+    0: "units",
+    1: "tens",
+  };
+  const roman = Array.from(String(integer))
+    .reverse()
+    .reduce((romanized, digit, i) => {
+      return `${
+        lookup[indexToDecimalPlacesLookup[i]][Number(digit)] ?? ""
+      }${romanized}`;
+    }, "");
+  return roman;
 };
 
 interface IntegerToRomanCalculatorProps {
