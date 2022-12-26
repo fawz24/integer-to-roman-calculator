@@ -61,4 +61,20 @@ describe("IntegerToRomanCalculator", () => {
       RegExp(`^${output}$`)
     );
   });
+
+  const max = 1000;
+  it.each([-38, 0, max + 1])(
+    "doest not convert out of range integer values | (%i)",
+    (input) => {
+      render(<IntegerToRomanCalculator min={1} max={max} />);
+      const inputElement = screen.getByLabelText("Integer");
+
+      fireEvent.change(inputElement, {
+        target: { value: input },
+      });
+
+      expect(inputElement).toHaveValue(null);
+      expect(screen.getByTestId("roman-output")).toHaveTextContent("");
+    }
+  );
 });
